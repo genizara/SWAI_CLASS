@@ -299,7 +299,7 @@ https://www.tooplate.com/view/2121-wave-cafe
               "landingUrl":"yonsei.ac.kr", 
               "ip":"192.168.0.1", 
               "referer":"https://instagram.com/yonsei",
-              "time_stamp":"2024-03-29 13:00:00", 
+              "time_stamp":"2024-03-29 13:00:01", 
               "utm":"twitter",
               "device":"mobile"}
               );
@@ -404,16 +404,35 @@ https://www.tooplate.com/view/2121-wave-cafe
 
       addrScript = 'https://script.google.com/macros/s/AKfycbxaAG_7gV9K0xk1bC7K1B3hvIAO77q-3IiCkH6JlqkYPp0dUoEvoQtKxL9_AY5v86yS/exec';
 
-					$.ajax({
-					    url: addrScript+'?action=insert&table=visitors&data='+data,
-					    dataType: 'jsonp',
-					    success: function (data) {
-						console.log('성공 - ', JSON.stringify(data));
-					    },
-					    error: function (xhr) {
-						console.log('실패 - ', JSON.stringify(xhr));
-					    }
-					});
+			//		$.ajax({
+			//		    url: addrScript+'?action=insert&table=visitors&data='+data,
+			//		    dataType: 'jsonp',
+			//		    success: function (data) {
+			//			console.log('성공 - ', JSON.stringify(data));
+			//		    },
+			//		    error: function (xhr) {
+			//			console.log('실패 - ', JSON.stringify(xhr));
+			//		    }
+			//		});
+          axios.get(addrScript+'?action=insert&table=visitors&data='+data)
+				    .then(response => {
+							console.log(JSON.stringify(response));
+						})
+						.catch(error => {
+							if (error.response) {
+								// 서버가 2xx 범위를 벗어난 상태 코드로 응답한 경우
+								console.log(error.response.data);
+								console.log(error.response.status);
+								console.log(error.response.headers);
+							} else if (error.request) {
+								// 요청이 전송되었지만 응답을 받지 못한 경우
+								console.log(error.request);
+							} else {
+								// 요청 설정 중에 오류가 발생한 경우
+								console.log('Error', error.message);
+							}
+							console.log(error.config);
+						});
     });
       
   </script>
