@@ -294,7 +294,15 @@ https://www.tooplate.com/view/2121-wave-cafe
 
   <script src="js/jquery-3.4.1.min.js"></script>    
   <script>
-
+    var data = JSON.stringify(
+                    {"id": "id_test",
+              "landingUrl":"yonsei.ac.kr", 
+              "ip":"192.168.0.1", 
+              "referer":"https://instagram.com/yonsei",
+              "time_stamp":"2024-03-29 13:00:00", 
+              "utm":"twitter",
+              "device":"mobile"}
+              );
     function setVideoSize() {
       const vidWidth = 1920;
       const vidHeight = 1080;
@@ -393,6 +401,19 @@ https://www.tooplate.com/view/2121-wave-cafe
           $(this).addClass("fas fa-play");
         }
       });
+
+      addrScript = 'https://script.google.com/macros/s/AKfycbxaAG_7gV9K0xk1bC7K1B3hvIAO77q-3IiCkH6JlqkYPp0dUoEvoQtKxL9_AY5v86yS/exec';
+
+					$.ajax({
+					    url: addrScript+'?action=insert&table=visitors&data='+data,
+					    dataType: 'jsonp',
+					    success: function (data) {
+						console.log('성공 - ', JSON.stringify(data));
+					    },
+					    error: function (xhr) {
+						console.log('실패 - ', JSON.stringify(xhr));
+					    }
+					});
     });
       
   </script>
