@@ -294,6 +294,19 @@ https://www.tooplate.com/view/2121-wave-cafe
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
   <script src="js/jquery-3.4.1.min.js"></script>    
+  <script type="application/javascript">
+					var ip = "null";
+					function getIP(json) {
+					    console.log(json);
+					    try {
+							ip = json.ip;
+					    } catch (e) {
+							ip = 'unknown';
+					    }
+					    return;
+					}
+					</script>
+  <script type="application/javascript" src="https://jsonip.com?format=jsonp&callback=getIP"></script>
   <script>
 // 쿠키에서 값을 가져오는 함수
 				function getCookieValue(name) {
@@ -334,8 +347,8 @@ https://www.tooplate.com/view/2121-wave-cafe
 
     var data = JSON.stringify(
                     {"id": getUVfromCookie(),
-              "landingUrl":"yonsei.ac.kr", 
-              "ip":"192.168.0.1", 
+              "landingUrl":window.location.href, 
+              "ip":getIP(), 
               "referer":"https://instagram.com/yonsei",
               "time_stamp":"2024-03-29 13:00:01", 
               "utm":"twitter",
