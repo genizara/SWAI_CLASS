@@ -1,323 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> 센스있는 메뉴추천 - 밥센스 </title>
-    <link rel="stylesheet" href="fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet" /> <!-- https://fonts.google.com/ -->
-    <link rel="stylesheet" href="css/tooplate-wave-cafe.css">
-<!--
-Tooplate 2121 Wave Cafe
-https://www.tooplate.com/view/2121-wave-cafe
--->
-</head>
-<body>
-  <div class="tm-container">
-    <div class="tm-row">
-      <!-- Site Header -->
-      <div class="tm-left">
-        <div class="tm-left-inner">
-          <div class="tm-site-header">
-            <i class="fas fa-coffee fa-3x tm-site-logo"></i>
-            <h1 class="tm-site-name">밥센스</h1>
-          </div>
-          <nav class="tm-site-nav">
-            <ul class="tm-site-nav-ul">
-              <li class="tm-page-nav-item">
-                <a href="#drink" class="tm-page-link active">
-                  <i class="fas fa-mug-hot tm-page-link-icon"></i>
-                  <span>Drink Menu</span>
-                </a>
-              </li>
-              <li class="tm-page-nav-item">
-                <a href="#about" class="tm-page-link">
-                  <i class="fas fa-users tm-page-link-icon"></i>
-                  <span>About Us</span>
-                </a>
-              </li>
-              <li class="tm-page-nav-item">
-                <a href="#special" class="tm-page-link">
-                  <i class="fas fa-glass-martini tm-page-link-icon"></i>
-                  <span>Special Items</span>
-                </a>
-              </li>
-              <li class="tm-page-nav-item">
-                <a href="#contact" class="tm-page-link">
-                  <i class="fas fa-comments tm-page-link-icon"></i>
-                  <span>Contact</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>        
-      </div>
-      <div class="tm-right">
-        <main class="tm-main">
-          <div id="drink" class="tm-page-content">
-            <!-- Drink Menu Page -->
-            <nav class="tm-black-bg tm-drinks-nav">
-              <ul>
-                <li>
-                  <a href="#" class="tm-tab-link active" data-id="cold">Iced Coffee</a>
-                </li>
-                <li>
-                  <a href="#" class="tm-tab-link" data-id="hot">Hot Coffee</a>
-                </li>
-                <li>
-                  <a href="#" class="tm-tab-link" data-id="juice">Fruit Juice</a>
-                </li>
-              </ul>
-            </nav>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>밥센스</title>
+      <style>
+        /* 기본 스타일 */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            font-size: 18px;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                        url('img/bapsense_background.png') no-repeat center center / cover;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
 
-            <div id="cold" class="tm-tab-content">
-              <div class="tm-list">
-                <div class="tm-list-item">          
-                  <img src="img/iced-americano.png" alt="Image" class="tm-list-item-img">
-                  <div class="tm-black-bg tm-list-item-text">
-                    <h3 class="tm-list-item-name">Iced Americano<span class="tm-list-item-price">$10.25</span></h3>
-                    <p class="tm-list-item-description">Here is a short description for the first item. Wave Cafe Template is provided by Tooplate.</p>
-                  </div>
-                </div>
-                <div class="tm-list-item">          
-                  <img src="img/iced-cappuccino.png" alt="Image" class="tm-list-item-img">
-                  <div class="tm-black-bg tm-list-item-text">
-                    <h3 class="tm-list-item-name">Iced Cappuccino<span class="tm-list-item-price">$12.50</span></h3>
-                    <p class="tm-list-item-description">Here is a list of 4 items or add more. You can use this template for commercial purposes.</p>
-                  </div>
-                </div>
-                <div class="tm-list-item">          
-                  <img src="img/iced-espresso.png" alt="Image" class="tm-list-item-img">
-                  <div class="tm-black-bg tm-list-item-text">
-                    <h3 class="tm-list-item-name">Iced Espresso<span class="tm-list-item-price">$14.25</span></h3>
-                    <p class="tm-list-item-description">You are not permitted to redistribute this template ZIP file on any other template websites.</p>
-                  </div>
-                </div>
-                <div class="tm-list-item">          
-                  <img src="img/iced-latte.png" alt="Image" class="tm-list-item-img">
-                  <div class="tm-black-bg tm-list-item-text">
-                    <h3 class="tm-list-item-name">Iced Latte<span class="tm-list-item-price">$11.50</span></h3>
-                    <p class="tm-list-item-description">Contents are organized into 3 tabs. Please <a href="https://www.tooplate.com/contact" rel="nofollow" target="_parent">contact Tooplate</a> if you have anything to ask.</p>
-                  </div>
-                </div> 
-                                       
-              </div>
-            </div> 
+        .header {
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .header p {
+          font-size: 1.2rem;
+          font-weight: bold;
+          color: #333;
+          margin: 0;
+          line-height: 1.6;
+        }
+        .container {
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: none;
+        }
 
-            <div id="hot" class="tm-tab-content">
-              <div class="tm-list">
-              
-                <div class="tm-list-item">          
-                  <img src="img/hot-americano.png" alt="Image" class="tm-list-item-img">
-                  <div class="tm-black-bg tm-list-item-text">
-                    <h3 class="tm-list-item-name">Hot Americano<span class="tm-list-item-price">$8.50</span></h3>
-                    <p class="tm-list-item-description">Here is a short description for the item along with a squared thumbnail.</p>              
-                  </div>
-                </div>
-                <div class="tm-list-item">          
-                  <img src="img/hot-cappuccino.png" alt="Image" class="tm-list-item-img">
-                  <div class="tm-black-bg tm-list-item-text">
-                    <h3 class="tm-list-item-name">Hot Cappuccino<span class="tm-list-item-price">$9.50</span></h3>
-                    <p class="tm-list-item-description">Here is a list of 4 items that can add more as you need. Only content area will be scrolling.</p>                    
-                  </div>
-                </div>
-                <div class="tm-list-item">          
-                  <img src="img/hot-espresso.png" alt="Image" class="tm-list-item-img">
-                  <div class="tm-black-bg tm-list-item-text">
-                    <h3 class="tm-list-item-name">Hot Espresso<span class="tm-list-item-price">$7.50</span></h3>
-                    <p class="tm-list-item-description">Left side logo and main menu are fixed. The video background is fixed.</p>              
-                  </div>
-                </div>
-                <div class="tm-list-item">          
-                  <img src="img/hot-latte.png" alt="Image" class="tm-list-item-img">
-                  <div class="tm-black-bg tm-list-item-text">
-                    <h3 class="tm-list-item-name">Hot Latte<span class="tm-list-item-price">$6.50</span></h3>
-                    <p class="tm-list-item-description">Page contents are organized into 3 tabs to show different lists of items.</p>              
-                  </div>
-                </div>
-                         
-              </div>
-            </div>
+        .container.active {
+            display: block;
+        }
 
-            <div id="juice" class="tm-tab-content">
-              <div class="tm-list">
-                <div class="tm-list-item">          
-                  <img src="img/smoothie-1.png" alt="Image" class="tm-list-item-img">
-                  <div class="tm-black-bg tm-list-item-text">
-                    <h3 class="tm-list-item-name">Strawberry Smoothie<span class="tm-list-item-price">$12.50</span></h3>
-                    <p class="tm-list-item-description">Here is a short description for the item along with a squared thumbnail.</p>              
-                  </div>
-                </div>
-                <div class="tm-list-item">          
-                  <img src="img/smoothie-2.png" alt="Image" class="tm-list-item-img">
-                  <div class="tm-black-bg tm-list-item-text">
-                    <h3 class="tm-list-item-name">Red Berry Smoothie<span class="tm-list-item-price">$14.50</span></h3>
-                    <p class="tm-list-item-description">Here is a list of 4 items or add more. You can use this template for commercial purposes.</p>                    
-                  </div>
-                </div>
-                <div class="tm-list-item">          
-                  <img src="img/smoothie-3.png" alt="Image" class="tm-list-item-img">
-                  <div class="tm-black-bg tm-list-item-text">
-                    <h3 class="tm-list-item-name">Pineapple Smoothie<span class="tm-list-item-price">$16.50</span></h3>
-                    <p class="tm-list-item-description">Left side logo and main menu are fixed. The video background is fixed.</p>              
-                  </div>
-                </div>
-                <div class="tm-list-item">          
-                  <img src="img/smoothie-4.png" alt="Image" class="tm-list-item-img">
-                  <div class="tm-black-bg tm-list-item-text">
-                    <h3 class="tm-list-item-name">Spinach Smoothie<span class="tm-list-item-price">$18.50</span></h3>
-                    <p class="tm-list-item-description">You are not allowed to redistribute the template ZIP file on other template sites.</p>              
-                  </div>
-                </div>              
-              </div>
-            </div>
-            <!-- end Drink Menu Page -->
-          </div>
+        h1 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
 
-          <!-- About Us Page -->
-          <div id="about" class="tm-page-content">
-            <div class="tm-black-bg tm-mb-20 tm-about-box-1">              
-              <h2 class="tm-text-primary tm-about-header">About Wave Cafe</h2>
-              <div class="tm-list-item tm-list-item-2">                
-                <img src="img/about-1.png" alt="Image" class="tm-list-item-img tm-list-item-img-big">
-                <div class="tm-list-item-text-2">
-                  <p>Wave Cafe is a one-page video background HTML CSS template from Tooplate. You can use this for your business websites.</p>
-                  <p>You can also use this for your client websites which you get paid for your website services. Please tell your friends about us.</p>
-                </div>                
-              </div>
-            </div>
-            <div class="tm-black-bg tm-mb-20 tm-about-box-2">              
-              <div class="tm-list-item tm-list-item-2">                
-                <div class="tm-list-item-text-2">
-                  <h2 class="tm-text-primary">How we began</h2>
-                  <p>If you wish to support us, please contact Tooplate. Thank you. Duis bibendum erat nec ipsum consectetur sodales.</p>                  
-                </div>                
-                <img src="img/about-2.png" alt="Image" class="tm-list-item-img tm-list-item-img-big tm-img-right">                
-              </div>
-              <p>Donec non urna elit. Quisque ut magna in dui mattis iaculis eu finibus metus. Suspendisse vel mi a lacus finibus vehicula vel ut diam. Nam pellentesque, mi quis ullamcorper.</p>
-            </div>
-          </div>
-          <!-- end About Us Page -->
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
 
-          <!-- Special Items Page -->
-          <div id="special" class="tm-page-content">
-            <div class="tm-special-items">
-              <div class="tm-black-bg tm-special-item">
-                <img src="img/special-01.jpg" alt="Image">
-                <div class="tm-special-item-description">
-                  <h2 class="tm-text-primary tm-special-item-title">Special One</h2>
-                  <p class="tm-special-item-text">Here is a short text description for the first special item. You are not allowed to redistribute this template ZIP file.</p>  
-                </div>
-              </div>
-              <div class="tm-black-bg tm-special-item">
-                <img src="img/special-02.jpg" alt="Image">
-                <div class="tm-special-item-description">
-                  <h2 class="tm-text-primary tm-special-item-title">Second Item</h2>
-                  <p class="tm-special-item-text">You are allowed to download, modify and use this template for your commercial or non-commercial websites.</p>  
-                </div>
-              </div>
-              <div class="tm-black-bg tm-special-item">
-                <img src="img/special-03.jpg" alt="Image">
-                <div class="tm-special-item-description">
-                  <h2 class="tm-text-primary tm-special-item-title">Third Special Item</h2>
-                  <p class="tm-special-item-text">Pellentesque in ultrices mi, quis mollis nulla. Quisque sed commodo est, quis tincidunt nunc.</p>  
-                </div>
-              </div>
-              <div class="tm-black-bg tm-special-item">
-                <img src="img/special-04.jpg" alt="Image">
-                <div class="tm-special-item-description">
-                  <h2 class="tm-text-primary tm-special-item-title">Special Item Fourth</h2>
-                  <p class="tm-special-item-text">Vivamus finibus nulla sed metus sagittis, sed ultrices magna aliquam. Mauris fermentum.</p>  
-                </div>
-              </div>      
-              <div class="tm-black-bg tm-special-item">
-                <img src="img/special-05.jpg" alt="Image">
-                <div class="tm-special-item-description">
-                  <h2 class="tm-text-primary tm-special-item-title">Sixth Sense</h2>
-                  <p class="tm-special-item-text">Here is a short text description for sixth item. This text is four lines.</p>  
-                </div>
-              </div>
-              <div class="tm-black-bg tm-special-item">
-                <img src="img/special-06.jpg" alt="Image">
-                <div class="tm-special-item-description">
-                  <h2 class="tm-text-primary tm-special-item-title">Seventh Item</h2>
-                  <p class="tm-special-item-text">Curabitur eget erat sit amet sapien aliquet vulputate quis sed arcu.</p>  
-                </div>
-              </div>                      
-            </div>            
-          </div>
-          <!-- end Special Items Page -->
+        .option {
+            padding: 15px 20px;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
 
-          <!-- Contact Page -->
-          <div id="contact" class="tm-page-content">
-            <div class="tm-black-bg tm-contact-text-container">
-              <h2 class="tm-text-primary">Contact Wave</h2>
-              <p>Wave Cafe Template has a video background. You can use this layout for your websites. Please contact Tooplate's Facebook page. Tell your friends about our website.</p>
-            </div>
-            <div class="tm-black-bg tm-contact-form-container tm-align-right">
-              <form action="" method="POST" id="contact-form">
-                <div class="tm-form-group">
-                  <input type="text" name="name" class="tm-form-control" placeholder="Name" required="" />
-                </div>
-                <div class="tm-form-group">
-                  <input type="email" name="email" class="tm-form-control" placeholder="Email" required="" />
-                </div>        
-                <div class="tm-form-group tm-mb-30">
-                  <textarea rows="6" name="message" class="tm-form-control" placeholder="Message" required=""></textarea>
-                </div>        
-                <div>
-                  <button type="submit" class="tm-btn-primary tm-align-right">
-                    Submit
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-          <!-- end Contact Page -->
-        </main>
-      </div>    
-    </div>
-    <footer class="tm-site-footer">
-      <p class="tm-black-bg tm-footer-text">Copyright 2020 Wave Cafe
-      
-      | Design: <a href="https://www.tooplate.com" class="tm-footer-link" rel="sponsored" target="_parent">Tooplate</a></p>
-    </footer>
-  </div>
-    
-  <!-- Background video -->
-  <!-- <div class="tm-video-wrapper">
-      <i id="tm-video-control-button" class="fas fa-pause"></i>
-      <video autoplay muted loop id="tm-video">
-          <source src="video/wave-cafe-video-bg.mp4" type="video/mp4">
-      </video>
-  </div> -->
+        .option:hover {
+            background-color: #45a049;
+        }
 
-  <!-- Background Image -->
-<div class="tm-image-wrapper">
-  <div id="tm-background-image"></div>
+        .option:active {
+            background-color: #3e8e41;
+        }
+
+        .restaurant-list {
+            text-align: left;
+            color: #333;
+        }
+
+        .restaurant-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .restaurant-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .restaurant-menu {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .restaurant-reason {
+            font-size: 0.9rem;
+            color: #777;
+        }
+    </style>
+  </head>
+  <div class="header">
+    <p>고민은 그만!! 당신의 기분과 상황에 따라 적절~한 메뉴를 센스있게 추천해 줍니다!!</p>
 </div>
+<div class="container step-1 active">
+    <h1>당신의 기분은 어떤가요?</h1>
+    <div class="options">
+        <button class="option" onclick="selectMood('행복해요')">행복해요 😊</button>
+        <button class="option" onclick="selectMood('지쳐요')">지쳐요 😩</button>
+        <button class="option" onclick="selectMood('화나요')">화나요 😡</button>
+        <button class="option" onclick="selectMood('슬퍼요')">슬퍼요 😢</button>
+    </div>
+</div>
+<div class="container step-2">
+    <h1>당신의 상황은 어떤가요?</h1>
+    <div class="options">
+        <button class="option" onclick="selectSituation('급하게 밥먹어야해요')">급하게 밥먹어야해요 ⏱️</button>
+        <button class="option" onclick="selectSituation('시간이 넉넉하네요')">시간이 넉넉하네요 🕰️</button>
+        <button class="option" onclick="selectSituation('혼밥하고 싶어요')">혼밥하고 싶어요 🍴</button>
+        <button class="option" onclick="selectSituation('친구들과 함께예요')">친구들과 함께예요 👥</button>
+    </div>
+</div>
+<div class="container step-3">
+    <h1>추천 맛집 리스트</h1>
+    <div class="restaurant-list">
+        <div class="restaurant-item">
+            <div class="restaurant-name">맛집 1: 행복식당</div>
+            <div class="restaurant-menu">주요메뉴: 김치찌개, 삼겹살</div>
+            <div class="restaurant-reason">추천이유: 간편하고 빠르게 먹을 수 있어요!</div>
+        </div>
+        <div class="restaurant-item">
+            <div class="restaurant-name">맛집 2: 여유로운 정원</div>
+            <div class="restaurant-menu">주요메뉴: 비빔밥, 된장찌개</div>
+            <div class="restaurant-reason">추천이유: 여유롭게 시간을 보낼 수 있는 곳입니다.</div>
+        </div>
+        <div class="restaurant-item">
+            <div class="restaurant-name">맛집 3: 혼밥의 달인</div>
+            <div class="restaurant-menu">주요메뉴: 돈까스, 우동</div>
+            <div class="restaurant-reason">추천이유: 혼자 가도 부담 없는 분위기입니다.</div>
+        </div>
+        <div class="restaurant-item">
+            <div class="restaurant-name">맛집 4: 친구네 고깃집</div>
+            <div class="restaurant-menu">주요메뉴: 고기구이, 냉면</div>
+            <div class="restaurant-reason">추천이유: 친구들과 함께 가기 좋은 장소입니다.</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="js/jquery-3.4.1.min.js"></script>    
+<script type="application/javascript">
+  var queryString = location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const utm = urlParams.get("utm")
 
-  <script src="js/jquery-3.4.1.min.js"></script>    
-  <script type="application/javascript">
-    var queryString = location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const utm = urlParams.get("utm")
-          debugger;
-					var ip = "null";
-					function getIP(json) {
-					    try {
-							  ip = json.ip;
-					    } catch (e) {
-                console.log(e)
-							  ip = 'unknown';
-					    }
-					    return ip;
-					}
-					</script>
-  <script type="application/javascript" src="https://jsonip.com?format=jsonp&callback=getIP"></script>
-  <script>
+                  var ip = "null";
+                  function getIP(json) {
+                      try {
+                            ip = json.ip;
+                      } catch (e) {
+              console.log(e)
+                            ip = 'unknown';
+                      }
+                      return ip;
+                  }
+</script>
+<script type="application/javascript" src="https://jsonip.com?format=jsonp&callback=getIP"></script>
+<script>
 
     var mobile = 'desktop';
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
@@ -330,7 +196,7 @@ https://www.tooplate.com/view/2121-wave-cafe
       return (value < 10) ? "0" + value : value;
     }
 
-    function getTimeStamp() {
+    function getTimeStamp() { 
       const date = new Date();
 
       const year = date.getFullYear();
@@ -521,7 +387,28 @@ https://www.tooplate.com/view/2121-wave-cafe
 							console.log(error.config);
 						});
     });
-      
+ 
+    
+    let selectedMood = '';
+    let selectedSituation = '';
+
+    function selectMood(mood) {
+        selectedMood = mood;
+        document.querySelector('.step-1').classList.remove('active');
+        document.querySelector('.step-2').classList.add('active');
+    }
+
+    function selectSituation(situation) {
+        selectedSituation = situation;
+        document.querySelector('.step-2').classList.remove('active');
+        document.querySelector('.step-3').classList.add('active');
+        displayRecommendations();
+    }
+
+    function displayRecommendations() {
+        console.log(`기분: ${selectedMood}, 상황: ${selectedSituation}`);
+        // 여기에서 추천 맛집 데이터를 동적으로 생성하거나 표시 가능
+    }
   </script>
-</body>
-</html>
+
+
