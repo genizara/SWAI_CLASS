@@ -113,6 +113,98 @@
             font-size: 0.9rem;
             color: #777;
         }
+
+        .emotion-container p {
+          font-size: 1.2rem;
+          font-weight: bold;
+          color: #333; /* 검은색으로 변경 */
+          background: rgba(255, 255, 255, 0.8);
+          padding: 10px;
+          border-radius: 10px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+          cursor: pointer; /* 클릭 가능 표시 */
+          text-align: center;
+          min-width: 100px;
+          margin: 5px auto;
+      }
+      .situation-container p {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #333; /* 검은색 글씨 */
+        background: rgba(255, 255, 255, 0.8);
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        cursor: pointer; /* 클릭 가능 표시 */
+        text-align: center;
+        min-width: 100px;
+        margin: 5px auto;
+    }
+    .location-input {
+      font-size: 1rem;
+      padding: 10px;
+      margin: 15px 0;
+      width: 90%;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+    .loading-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 200px;
+      margin-top: 20px;
+      color: #fff; /* 글씨를 흰색으로 설정 */
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* 글씨를 돋보이게 */
+  }
+
+  .loading-animation {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+  }
+
+  .icon {
+      font-size: 2rem;
+      animation: spin 1.5s linear infinite;
+      color: #ffd700; /* 아이콘을 황금색으로 설정 */
+  }
+
+  @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+  }
+
+  .loading-message {
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-align: center;
+      color: #fff; /* 글씨를 흰색으로 설정 */
+      background: rgba(0, 0, 0, 0.6); /* 배경에 반투명 검은색 추가 */
+      padding: 10px 15px;
+      border-radius: 10px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* 돋보이게 설정 */
+  }
+  .thank-you-button {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #4caf50; /* 녹색 */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.thank-you-button:hover {
+    background-color: #45a049; /* 더 진한 녹색 */
+}
     </style>
   </head>
   <div class="header">
@@ -127,37 +219,30 @@
 </div>
 <div class="container step-2">
     <h1>당신의 상황은 어떤가요?</h1>
-    <div class="options">
-        <button class="option" onclick="selectSituation('급하게 밥먹어야해요')">급하게 밥먹어야해요 ⏱️</button>
-        <button class="option" onclick="selectSituation('시간이 넉넉하네요')">시간이 넉넉하네요 🕰️</button>
-        <button class="option" onclick="selectSituation('혼밥하고 싶어요')">혼밥하고 싶어요 🍴</button>
-        <button class="option" onclick="selectSituation('친구들과 함께예요')">친구들과 함께예요 👥</button>
+    <div class="situation-container">
+      <!-- Situations will be displayed here -->
     </div>
+    <button class="option" onclick="fetchRandomSituations()">썩 그런 상황은 아닌걸</button>
 </div>
 <div class="container step-3">
+  <h1>지금 계신 장소는 어디인가요??</h1>
+  <input type="text" id="current-location" placeholder="예: 서울 강남구" class="location-input">
+  <button class="option" onclick="saveLocation()">다음 단계로</button>
+</div>
+
+<div class="container step-4">
     <h1>추천 맛집 리스트</h1>
     <div class="restaurant-list">
-        <div class="restaurant-item">
-            <div class="restaurant-name">맛집 1: 행복식당</div>
-            <div class="restaurant-menu">주요메뉴: 김치찌개, 삼겹살</div>
-            <div class="restaurant-reason">추천이유: 간편하고 빠르게 먹을 수 있어요!</div>
-        </div>
-        <div class="restaurant-item">
-            <div class="restaurant-name">맛집 2: 여유로운 정원</div>
-            <div class="restaurant-menu">주요메뉴: 비빔밥, 된장찌개</div>
-            <div class="restaurant-reason">추천이유: 여유롭게 시간을 보낼 수 있는 곳입니다.</div>
-        </div>
-        <div class="restaurant-item">
-            <div class="restaurant-name">맛집 3: 혼밥의 달인</div>
-            <div class="restaurant-menu">주요메뉴: 돈까스, 우동</div>
-            <div class="restaurant-reason">추천이유: 혼자 가도 부담 없는 분위기입니다.</div>
-        </div>
-        <div class="restaurant-item">
-            <div class="restaurant-name">맛집 4: 친구네 고깃집</div>
-            <div class="restaurant-menu">주요메뉴: 고기구이, 냉면</div>
-            <div class="restaurant-reason">추천이유: 친구들과 함께 가기 좋은 장소입니다.</div>
-        </div>
+ 
     </div>
+</div>
+<div class="loading-container" style="display: none;">
+  <div class="loading-animation">
+      <span class="icon">🍕</span>
+      <span class="icon">🍔</span>
+      <span class="icon">🍩</span>
+  </div>
+  <p class="loading-message">데이터를 불러오는 중...</p>
 </div>
 </body>
 </html>
@@ -165,6 +250,7 @@
 
 <script src="js/jquery-3.4.1.min.js"></script>    
 <script type="application/javascript">
+
   var queryString = location.search;
   const urlParams = new URLSearchParams(queryString);
   const utm = urlParams.get("utm")
@@ -183,12 +269,18 @@
 <script type="application/javascript" src="https://jsonip.com?format=jsonp&callback=getIP"></script>
 <script>
 
+      // 전역 변수 정의
+    let selectedEmotion = '';   // 선택된 감정
+    let selectedSituation = ''; // 선택된 상황
+    let currentLocation = '';   // 현재 위치
+    let currentWeather = '맑음';    // 현재 날씨
+
     var mobile = 'desktop';
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
       // true for mobile device
       mobile = 'mobile';
     }
-    var addrScript = 'https://script.google.com/macros/s/AKfycbzdq8OoQNhZlEshJ0hHUXvGmt425wnDYKTz131cCG7omTBFuRNKg1bHs0TwisVY3T7c/exec';
+    var addrScript = 'https://script.google.com/macros/s/AKfycbwxenD4irSEQ9YUCIip0IVp4CuVEKGaNV1_7GcA6kiHvsF9gKtYEYbppZy2ngXj-eww/exec';
                                                             
     // Sam pading value to start with 0. eg: 01, 02, .. 09, 10, ..
     function padValue(value) {
@@ -201,21 +293,52 @@
 
       var params = new URLSearchParams({
         action: 'getRandomEmotions',
-        table: 'emotions'
+        table: 'emotions',
+        callback: 'handleRandomEmotions'
       });
 
-      axios.get(`${addrScript}?${params.toString()}`)
-        .then(response => {
-          const emotions = response.data.data;
+
+       // Append a script tag to dynamically load the JSONP response
+        const script = document.createElement('script');
+        script.src = `${addrScript}?${params.toString()}`;
+        document.body.appendChild(script);
+    }
+
+    function handleRandomEmotions(response) {
+      if (response.success) {
+          const emotions = response.data;
           const emotionContainer = document.querySelector('.emotion-container');
-          // Replace the current emotions with new ones
-          emotionContainer.innerHTML = emotions.map(emotion => `<p>${emotion}</p>`).join('');
-        })
-        .catch(error => {
-          console.error("Error fetching emotions:", error);
-        });
+          emotionContainer.innerHTML = emotions
+              .map(emotion => 
+                  `<p onclick="selectMood('${emotion}')">${emotion}</p>`
+              ).join(''); // 감정 클릭 시 selectMood 호출
+      } else {
+          console.error("Error fetching emotions:", response.message);
+      }
+    }   
+    function fetchRandomSituations() {
+      const params = new URLSearchParams({
+        action: 'getRandomSituations',
+        table: 'situations',
+        callback: 'handleRandomSituations'
+      });
+    
+      const script = document.createElement('script');
+      script.src = `${addrScript}?${params.toString()}`;
+      document.body.appendChild(script);
     }
     
+    function handleRandomSituations(response) {
+      if (response.success) {
+        const situations = response.data;
+        const situationContainer = document.querySelector('.situation-container');
+        situationContainer.innerHTML = situations
+          .map(situation => `<p onclick="selectSituation('${situation}')">${situation}</p>`)
+          .join(''); // 상황 클릭 시 selectSituation 호출
+      } else {
+        console.error("Error fetching situations:", response.message);
+      }
+    }   
     function getTimeStamp() { 
       const date = new Date();
 
@@ -410,26 +533,188 @@
     });
  
     
-    let selectedMood = '';
-    let selectedSituation = '';
-
     function selectMood(mood) {
-        selectedMood = mood;
-        document.querySelector('.step-1').classList.remove('active');
-        document.querySelector('.step-2').classList.add('active');
-    }
-
-    function selectSituation(situation) {
-        selectedSituation = situation;
+      selectedEmotion = mood; // 전역 변수에 저장
+      console.log(`선택된 감정: ${selectedEmotion}`);
+      document.querySelector('.step-1').classList.remove('active');
+      document.querySelector('.step-2').classList.add('active');
+      fetchRandomSituations(); // 상황 가져오기
+  }
+      function selectSituation(situation) {
+        selectedSituation = situation; // 전역 변수에 저장
+        console.log(`선택된 상황: ${selectedSituation}`);
         document.querySelector('.step-2').classList.remove('active');
         document.querySelector('.step-3').classList.add('active');
-        displayRecommendations();
     }
-
+    function saveLocation() {
+      const locationInput = document.getElementById('current-location').value.trim();
+      if (!locationInput) {
+          alert('현재 위치를 입력해주세요!');
+          return;
+      }
+      currentLocation = locationInput; // 전역 변수에 저장
+      console.log(`현재 위치: ${currentLocation}`);
+      getWeather(currentLocation); // 날씨 가져오기
+      document.querySelector('.step-3').classList.remove('active');
+      document.querySelector('.step-4').classList.add('active');
+      displayRecommendations();
+  }
     function displayRecommendations() {
-        console.log(`기분: ${selectedMood}, 상황: ${selectedSituation}`);
+
+        console.log(`기분: ${selectedEmotion}, 상황: ${selectedSituation}, 장소: ${currentLocation}, 날씨: ${currentWeather}`);
+        // 호출 예시
+      fetchRestaurantRecommendations();
         // 여기에서 추천 맛집 데이터를 동적으로 생성하거나 표시 가능
     }
+    // UEkRCiKewpF4S52O6Falp9pa4XiD2bHXZCKuZX432DsBSBjDWLK8bMJ5DE680d2LyjmC4Pt3F%2BzJgtUZK6XH8w%3D%3D
+    // 일반 인증키
+    // (Decoding)	
+    // UEkRCiKewpF4S52O6Falp9pa4XiD2bHXZCKuZX432DsBSBjDWLK8bMJ5DE680d2LyjmC4Pt3F+zJgtUZK6XH8w==
+    const weatherAPIKey = 'UEkRCiKewpF4S52O6Falp9pa4XiD2bHXZCKuZX432DsBSBjDWLK8bMJ5DE680d2LyjmC4Pt3F%2BzJgtUZK6XH8w%3D%3D'; // 발급받은 API 키 입력
+    const weatherBaseURL = 'http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst';
+
+    function getWeather(location) {
+      const [latitude, longitude] = convertLocationToLatLon(location);
+  
+      const today = new Date();
+      const baseDate = `${today.getFullYear()}${padValue(today.getMonth() + 1)}${padValue(today.getDate())}`;
+      const baseTime = '0500';
+      const nx = Math.round(longitude);
+      const ny = Math.round(latitude);
+  
+      const requestURL = `${weatherBaseURL}?serviceKey=${weatherAPIKey}&numOfRows=10&pageNo=1&base_date=${baseDate}&base_time=${baseTime}&nx=${nx}&ny=${ny}&dataType=JSON`;
+      
+      //fetch(requestURL)
+      //    .then(response => response.json())
+       //   .then(data => {
+      //        if (data.response.header.resultCode === '00') {
+      //            const items = data.response.body.items.item;
+      //            currentWeather = processWeatherData(items); // 전역 변수에 저장
+      //            console.log(`현재 날씨: ${currentWeather}`);
+      //        } else {
+      //            console.error('기상청 API 응답 오류:', data.response.header.resultMsg);
+      //        }
+      //    })
+      //   .catch(error => {
+      //        console.error('기상청 API 요청 오류:', error);
+      //    });
+        
+  }
+
+      function processWeatherData(weatherItems) {
+        // 간단한 날씨 정보 반환 (예시: 맑음, 비, 눈 등)
+        const weather = weatherItems.find(item => item.category === 'PTY'); // PTY: 강수 형태
+        const sky = weatherItems.find(item => item.category === 'SKY');    // SKY: 하늘 상태
+        return `강수: ${weather.fcstValue}, 하늘: ${sky.fcstValue}`;
+    }
+
+    function padValue(value) {
+        return value < 10 ? `0${value}` : value;
+    }
+
+    function convertLocationToLatLon(location) {
+        // 실제 구현 필요. 예제에서는 서울의 위경도 반환
+        // 서울: 위도 37.5665, 경도 126.9780
+        return [37.5665, 126.9780];
+    }
+
+    function displayWeather(weatherItems) {
+        // 날씨 데이터를 화면에 표시
+        console.log('날씨 데이터:', weatherItems);
+        const weatherInfo = weatherItems.map(item => `${item.category}: ${item.fcstValue}`).join('\n');
+        alert(`현재 날씨 정보:\n${weatherInfo}`);
+    }
+
+    const openAIEndpoint = 'https://api.openai.com/v1/chat/completions';  // OpenAI API 엔드포인트
+    let loadingInterval;
+    function fetchRestaurantRecommendations() {
+      showLoading();
+
+      const params = new URLSearchParams({
+          action: 'getRecommendation', // Apps Script에서 처리할 액션 이름
+          mood: selectedEmotion,       // 선택한 감정
+          situation: selectedSituation, // 선택한 상황
+          weather: currentWeather,      // 현재 날씨
+          location: currentLocation,    // 현재 위치
+          callback: 'handleRestaurantRecommendations' // JSONP 콜백 함수
+      });
+  
+      // Append a script tag to dynamically load the JSONP response
+      const script = document.createElement('script');
+      script.src = `${addrScript}?${params.toString()}`;
+      document.body.appendChild(script);
+  }
+  function handleRestaurantRecommendations(response) {
+    console.log(response.data)
+    if (response.success) {
+        const jsonResponse = JSON.parse(response.data); // OpenAI API에서 반환된 JSON 파싱
+        updateRestaurantList(jsonResponse); // 추천 결과를 UI에 업데이트
+    } else {
+        console.error('추천 정보 가져오기 실패:', response.error);
+        alert('추천 정보를 가져오는 데 실패했습니다. 다시 시도해주세요.');
+        console.log(response)
+    }
+    hideLoading();
+}
+    function showLoading() {
+      const loadingContainer = document.querySelector('.loading-container');
+      const loadingMessage = document.querySelector('.loading-message');
+      const messages = ["당신의 표정을 살피는 중", "맛집 수소문 중", "일기예보 확인 중", "최고의 선택을 고민 중"];
+      let messageIndex = 0;
+  
+      loadingContainer.style.display = 'flex';
+  
+      // 메시지 순환
+      loadingInterval = setInterval(() => {
+          loadingMessage.textContent = messages[messageIndex];
+          messageIndex = (messageIndex + 1) % messages.length;
+      }, 2000);
+  }
+  function hideLoading() {
+    const loadingContainer = document.querySelector('.loading-container');
+    loadingContainer.style.display = 'none';
+    clearInterval(loadingInterval);
+}
+function updateRestaurantList(recommendations) {
+  const restaurantListContainer = document.querySelector('.restaurant-list');
+  restaurantListContainer.innerHTML = ''; // 기존 내용 초기화
+
+  recommendations.forEach(restaurant => {
+      const item = `
+          <div class="restaurant-item">
+              <h3>${restaurant.식당명}</h3>
+              <p><strong>대표메뉴:</strong> ${restaurant.대표메뉴}</p>
+              <p><strong>거리:</strong> ${restaurant.거리}</p>
+              <p><strong>추천한 이유:</strong> ${restaurant.추천한이유}</p>
+              <p><strong>주소:</strong> ${restaurant.주소}</p>
+          </div>
+      `;
+      restaurantListContainer.innerHTML += item;
+  });
+
+  // 추천 목록 로딩 완료 후 "고마워!" 버튼 추가
+  createThankYouButton();
+}
+
+function createThankYouButton() {
+  // 이미 버튼이 있으면 생성하지 않음
+  if (document.getElementById('back-to-start')) return;
+
+  const container = document.querySelector('.step-4');
+  const thankYouButton = document.createElement('button');
+  thankYouButton.id = 'back-to-start';
+  thankYouButton.className = 'thank-you-button';
+  thankYouButton.textContent = '고마워!';
+
+  // 클릭 이벤트 추가: 새로고침
+  thankYouButton.addEventListener('click', () => {
+      location.reload(); // 페이지 새로고침
+  });
+
+  // 버튼을 컨테이너에 추가
+  container.insertBefore(thankYouButton, container.querySelector('.restaurant-list'));
+}
+  
   </script>
 
 
