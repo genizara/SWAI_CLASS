@@ -120,12 +120,10 @@
 </div>
 <div class="container step-1 active">
     <h1>당신의 기분은 어떤가요?</h1>
-    <div class="options">
-        <button class="option" onclick="selectMood('행복해요')">행복해요 😊</button>
-        <button class="option" onclick="selectMood('지쳐요')">지쳐요 😩</button>
-        <button class="option" onclick="selectMood('화나요')">화나요 😡</button>
-        <button class="option" onclick="selectMood('슬퍼요')">슬퍼요 😢</button>
+    <div class="emotion-container">
+      <!-- Emotions will be displayed here -->
     </div>
+    <button class="option" onclick="fetchRandomEmotions()">꼭 그건 아닌데..</button>
 </div>
 <div class="container step-2">
     <h1>당신의 상황은 어떤가요?</h1>
@@ -190,12 +188,34 @@
       // true for mobile device
       mobile = 'mobile';
     }
+    var addrScript = 'https://script.google.com/macros/s/AKfycbxaAG_7gV9K0xk1bC7K1B3hvIAO77q-3IiCkH6JlqkYPp0dUoEvoQtKxL9_AY5v86yS/exec';
 
     // Sam pading value to start with 0. eg: 01, 02, .. 09, 10, ..
     function padValue(value) {
       return (value < 10) ? "0" + value : value;
     }
 
+
+    
+    function fetchRandomEmotions() {
+
+      var params = new URLSearchParams({
+        action: 'getRandomEmotions',
+        table: 'emotions'
+      });
+
+      axios.get(`${addrScript}?${params.toString()}`)
+        .then(response => {
+          const emotions = response.data.data;
+          const emotionContainer = document.querySelector('.emotion-container');
+          // Replace the current emotions with new ones
+          emotionContainer.innerHTML = emotions.map(emotion => `<p>${emotion}</p>`).join('');
+        })
+        .catch(error => {
+          console.error("Error fetching emotions:", error);
+        });
+    }
+    
     function getTimeStamp() { 
       const date = new Date();
 
@@ -355,7 +375,6 @@
         }
       });
 
-      addrScript = 'https://script.google.com/macros/s/AKfycbxaAG_7gV9K0xk1bC7K1B3hvIAO77q-3IiCkH6JlqkYPp0dUoEvoQtKxL9_AY5v86yS/exec';
 
 			//		$.ajax({
 			//		    url: addrScript+'?action=insert&table=visitors&data='+data,
@@ -386,6 +405,8 @@
 							}
 							console.log(error.config);
 						});
+
+            fetchRandomEmotions();
     });
  
     
